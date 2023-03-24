@@ -1,23 +1,20 @@
 spring:
   application:
     name: movies-service
-  spring:
-    application:
-      name: ms-bill
-    security:
-      oauth2:
-        client:
-          provider:
-            keycloak:
-              user-name-attribute: preferred_username
-              issuer-uri: http://localhost:8082/realms/digital-media
-              jwk-set-uri: http://localhost:8082/realms/digital-media/protocol/openid-connect/certs
-          registration:
-            keycloak:
-              client-id: microservicios
-              client-secret: h1lZxa6kKaojbaq10TfCP7CoTL5xvf3Q
-              scope: openid
-              redirect_uri: http://localhost:8080
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            user-name-attribute: preferred_username
+            issuer-uri: http://localhost:8082/realms/digital-media
+            jwk-set-uri: http://localhost:8082/realms/digital-media/protocol/openid-connect/certs
+        registration:
+          keycloak:
+            client-id: microservicios
+            client-secret: h1lZxa6kKaojbaq10TfCP7CoTL5xvf3Q
+            scope: openid
+            redirect_uri: http://localhost:8080
 
   data:
     mongodb:
@@ -45,6 +42,7 @@ springdoc:
   swagger-ui:
     groups-order: DESC
     disable-swagger-default-url: true
+
 server:
   port: ${PORT:8085}
 
