@@ -20,7 +20,7 @@ public class KeycloakUserRepository {
     @Autowired
     private Keycloak keycloak;
 
-    @Value("${dh.keycloak.realm}")
+    @Value("${digital-media")
     public String realm;
 
 

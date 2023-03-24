@@ -14,5 +14,7 @@ public interface IUserService {
 
   List<User> findUsersNoAdmin();
 
+  void createUser(User user);
+
   List<User> findByUsernamePublic(String username);
 }

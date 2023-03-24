@@ -4,6 +4,7 @@ import com.digitalmedia.users.model.User;
 import com.digitalmedia.users.model.dto.UserRequest;
 import com.digitalmedia.users.service.IUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -16,12 +17,6 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
   private final IUserService userService;
- //TODO  estos dos endpoints funcionaran cuando este configurada la seguridad en el proyecto
-
-  /*@GetMapping("/me")
-  public User getUserExtra(Principal principal) {
-    return userService.validateAndGetUserExtra(principal.getName());
-  }*/
 
   @GetMapping("/me")
   public User getUserExtra(@RequestParam String principal) {
@@ -33,7 +28,16 @@ public class UserController {
   @GetMapping("/admin")
   public List<User> findUsersNoAdmin() {
 
-    return userService.;
+    return userService.findUsersNoAdmin();
+  }
+
+
+  @PreAuthorize("hasAuthority('GROUP_admin')")
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping("/create")
+  public void createKeycloakUser(@Valid @RequestBody User user) {
+
+    userService.createUser(user);
   }
 
 

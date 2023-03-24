@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements IUserService {
 
 
-  @Value("${dh.keycloak.realm}")
+  @Value("${digital-media")
   private String realm;
 
   private final UserRepository userRepository;

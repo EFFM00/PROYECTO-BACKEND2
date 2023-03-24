@@ -14,7 +14,7 @@ spring:
             client-id: microservicios
             client-secret: h1lZxa6kKaojbaq10TfCP7CoTL5xvf3Q
             scope: openid
-            redirect_uri: http://localhost:8080
+            redirect_uri: http://localhost:8085/login/oauth2/code/keycloak
 
   data:
     mongodb:
