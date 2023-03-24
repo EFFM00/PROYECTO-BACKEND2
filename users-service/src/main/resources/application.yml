@@ -41,6 +41,7 @@ spring:
             redirect_uri: http://localhost:8086/login/oauth2/code/keycloak
 
 
+
   data:
     mongodb:
       host: localhost
