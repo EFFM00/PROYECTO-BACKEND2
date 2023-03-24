@@ -1,2 +1,0 @@
-# PROYECTO-BACKEND2
-prueba2
