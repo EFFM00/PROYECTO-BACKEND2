@@ -30,6 +30,7 @@ spring:
       client:
         provider:
           keycloak:
+            user-name-attribute: preferred_username
             issuer-uri: http://localhost:8082/realms/digital-media
             jwk-set-uri: http://localhost:8082/realms/digital-media/protocol/openid-connect/certs
         registration:

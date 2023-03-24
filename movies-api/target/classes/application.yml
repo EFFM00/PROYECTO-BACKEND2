@@ -18,11 +18,14 @@ spring:
               scope: openid
               redirect_uri: http://localhost:8080
 
-#  data:
-#    mongodb:
-#      uri: mongodb://localhost:27017/moviesdb
-#  main:
-#    allow-circular-references: true
+  data:
+    mongodb:
+      host: localhost
+      port: 27016
+      password: root
+      username: root
+      authentication-database: root
+      database: db-movies-2
 
 app:
   cors:
