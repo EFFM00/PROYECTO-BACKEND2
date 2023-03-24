@@ -7,12 +7,14 @@ import org.keycloak.representations.idm.GroupRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Repository
 public class KeycloakUserRepository {
 
     @Autowired
@@ -39,7 +41,7 @@ public class KeycloakUserRepository {
         CredentialRepresentation password = new CredentialRepresentation();
         password.setTemporary(false);
         password.setType(CredentialRepresentation.PASSWORD);
-        password.setValue("digitalmedia");
+        password.setValue("pass123");
         user.setCredentials(Collections.singletonList(password));
         keycloak.realm(realm).users().create(user);
 
@@ -55,7 +57,6 @@ public class KeycloakUserRepository {
         }).collect(Collectors.toList());
         return notAdminUsers.stream().map(this::toNoAdminUser).collect(Collectors.toList());
     }
-
 
     private User toNoAdminUser(UserRepresentation userRepresentation) {
 

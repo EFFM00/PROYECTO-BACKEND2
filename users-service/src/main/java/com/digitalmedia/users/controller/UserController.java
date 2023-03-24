@@ -4,9 +4,11 @@ import com.digitalmedia.users.model.User;
 import com.digitalmedia.users.model.dto.UserRequest;
 import com.digitalmedia.users.service.IUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -25,6 +27,15 @@ public class UserController {
   public User getUserExtra(@RequestParam String principal) {
     return userService.validateAndGetUserExtra(principal);
   }
+
+
+  @PreAuthorize("hasAuthority('GROUP_admin')")
+  @GetMapping("/admin")
+  public List<User> findUsersNoAdmin() {
+
+    return userService.;
+  }
+
 
   @PostMapping("/me")
   public User saveUserExtra(@Valid @RequestBody UserRequest updateUserRequest, @RequestParam(value = "principal") String principal) {
