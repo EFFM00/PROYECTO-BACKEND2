@@ -1,1 +1,31 @@
+server:
+  port: ${PORT:8080}
 
+  cloud:
+    gateway:
+      routes:
+        - id: productRoute #identificador de la ruta
+          uri: http://localhost:8082 #URL donde se hará el redirect según el predicado definido
+          predicates: #Reglas de análisis del request
+            - Path=/product/** #path de URL de request a considerar
+            -
+        - id: userRoute #identificador de la ruta
+          uri: http://localhost:8081
+          predicates:
+            - Path=/user/**
+
+spring:
+  application:
+    name: dh-gateway
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8082/realms/digital-media
+        registration:
+          keycloak:
+            client-id: microservicios
+            client-secret: h1lZxa6kKaojbaq10TfCP7CoTL5xvf3Q
+            scope: openid
+            redirect_uri: http://localhost:8080
