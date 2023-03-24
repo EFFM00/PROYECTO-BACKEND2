@@ -7,6 +7,7 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://localhost:8082/realms/digital-media
+            jwk-set-uri: http://localhost:8080/realms/digital-media/protocol/openid-connect/certs
         registration:
           keycloak:
             client-id: microservicios
@@ -33,7 +34,7 @@ spring:
       path: /h2-console
 
 server:
-  port: ${PORT:8085}
+  port: ${PORT:8088}
 
 eureka:
   instance:
