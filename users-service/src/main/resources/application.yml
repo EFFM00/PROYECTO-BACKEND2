@@ -40,14 +40,14 @@ spring:
             redirect_uri: http://localhost:8080
 
 
-#  data:
-#    mongodb:
-#      host: localhost
-#      port: 27017
-#      password: admin
-#      username: root
-#      authentication-database: admin
-#      database: moviesdb
+  data:
+    mongodb:
+      host: localhost
+      port: 27015
+      password: root
+      username: root
+      authentication-database: root
+      database: db-users-2
 
 
   main:

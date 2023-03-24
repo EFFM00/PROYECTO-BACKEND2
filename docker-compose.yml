@@ -1,6 +1,38 @@
 version: '3.9'
 
 services:
+
+  mongodbmovies:
+    image: mongo:latest
+    container_name: mongodb-movies
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_DATABASE: root
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27016:27017
+    networks:
+      - local-keycloak
+    volumes:
+      - ./init-mongo-movie.js:/docker-entrypoint-initdb.d/init-mongo-movie.js:ro
+      
+  mongodbuser:
+    image: mongo:latest
+    container_name: mongodb-users
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_DATABASE: root
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27015:27017
+    networks:
+      - local-keycloak
+    volumes:
+      - ./init-mongo-user.js:/docker-entrypoint-initdb.d/init-mongo-user.js:ro
+
+
   postgres:
     image: postgres:latest
     restart: unless-stopped
