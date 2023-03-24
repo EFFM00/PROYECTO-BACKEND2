@@ -1,4 +1,4 @@
-package com.digitalmedia.movies.config;
+package com.digitalmedia.users.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
